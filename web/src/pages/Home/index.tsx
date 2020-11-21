@@ -1,32 +1,50 @@
-import React from 'react';
-import { FiLogIn } from 'react-icons/fi';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './styles.css';
+import { Header } from "../../components/Header";
 
-import logo from '../../assets/logo.svg';
+import ic from "../../assets/icons";
+import {
+  titleHome,
+  descriptionHome,
+  buttonTxtAddPoint,
+  buttonTxtSearchPoint,
+} from "../../utils/strings";
 
-const Home = () => {
-    return(
-        <div id="page-home">
-            <div className="content">
-                <header>
-                <img src={logo} alt="Ecoleta"/>
-                </header>
+import "./styles.css";
 
-                <main>
-                    <h1>Seu marketplace de coleta de resíduos.</h1>
-                    <p>Ajudamos as pessoas a encontrarem pontos de coleta de forma eficiente.</p>
+export const Home: React.FC = () => {
+  return (
+    <div id="page-home">
+      <div className="content">
+        <Header></Header>
 
-                    <a href="/cadastro">
-                        <span>
-                           <FiLogIn />
-                        </span>
-                        <strong>Cadastre um ponto de coleta</strong>
-                    </a>
-                </main>
-            </div>
-        </div>     
-    )
-}
+        <main>
+          <h1>{titleHome}</h1>
+          <p>{descriptionHome}</p>
+          <div className="button">
+            <Link to="/create-point">
+              <span>
+                <img
+                  src={ic.login}
+                  alt="Ícone representando o acesso a página de criação de um novo ponto de coleta"
+                />
+              </span>
+              <strong>{buttonTxtAddPoint}</strong>
+            </Link>
 
-export default Home;
+            <Link to="/search-point">
+              <span>
+                <img
+                  src={ic.buscar}
+                  alt="Ícone representando a procura por pontos de coletas existentes"
+                />
+              </span>
+              <strong>{buttonTxtSearchPoint}</strong>
+            </Link>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
